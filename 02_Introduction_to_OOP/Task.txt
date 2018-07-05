@@ -5,6 +5,3 @@ Create a diagram with an example of Aggregation.
 Create a diagram with an example of Composition.
 Consider encapsulation.
 Consider SRP. 
-
-
-Testing GIT
