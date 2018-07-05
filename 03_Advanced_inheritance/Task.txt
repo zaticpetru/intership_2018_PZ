@@ -1,0 +1,9 @@
+Advanced inheritance and polymorphism
+
+05 07 2018
+
+1) Open/closed principle
+2) Liskov substitution principle
+3) Interface segregation principle
+
+For each principle make an example that violate it, then solve violation
