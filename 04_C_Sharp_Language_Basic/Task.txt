@@ -1,0 +1,11 @@
+Task for lesson 4 C# language basics
+
+06 07 2018
+
+1)Create a helLo world program in C#
+2)Create instances of value types and reference types
+3)Use static methods
+4)Write a method for each type of parameter modifier 
+5)Use boxing and unboxing to prove the understanding of it
++Static constructor
++Threads
