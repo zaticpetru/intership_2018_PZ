@@ -10,10 +10,10 @@ namespace ISPexample
     {
         int Engine_Displacement();
         int Horsepower();
-        String GetTotalInformation();
+        string GetTotalInformation();
     }
 
-    public interface ISport
+    public interface ISport: IMotorcicle
     {
         int GetUsedMotohours();
         int GetWins();
@@ -21,14 +21,14 @@ namespace ISPexample
         int GetTotalParticipations();
     }
     
-    public interface IRoad
+    public interface IRoad: IMotorcicle
     {
         int GetMileage();
         int GetYearOfIssue();
         string GetRegistrationNumber();
     }
 
-    class KavasakiH2r : IMotorcicle, ISport
+    class KavasakiH2r : ISport
     {
         public int Engine_Displacement()
         {
@@ -69,7 +69,7 @@ namespace ISPexample
         }
     }
 
-    class HondaCB500 : IMotorcicle, IRoad
+    class HondaCB500 : IRoad
     {
         public int Engine_Displacement()
         {

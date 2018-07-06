@@ -84,7 +84,7 @@ namespace OCPexample
     }
 
 
-    class KTM : motocycle
+    class KTM : Motocycle
     {
         public override string GetInformation()
         {
@@ -93,11 +93,11 @@ namespace OCPexample
 
         public override int GetPrice()
         {
-            return (4500);
+            return 4500;
         }
     }
 
-    class Ducati : motocycle
+    class Ducati : Motocycle
     {
         public override string GetInformation()
         {
@@ -106,7 +106,7 @@ namespace OCPexample
 
         public override int GetPrice()
         {
-            return (9000);
+            return 9000;
         }
     }
     class Program
@@ -140,7 +140,7 @@ namespace OCPexample
 
             Console.WriteLine("\n\n\nNOW THE CORRECT!!!");
 
-            List<motocycle> correct = new List<motocycle>();
+            List<Motocycle> correct = new List<Motocycle>();
             correct.Add(new KTM());
             correct.Add(new Ducati());
             correct.Add(new KTM());
@@ -151,7 +151,7 @@ namespace OCPexample
             correct.Add(new Ducati());
             correct.Add(new Ducati());
 
-            foreach (motocycle i in correct)
+            foreach (Motocycle i in correct)
             {
                 Console.WriteLine(i.GetInformation() + " with only !!! - " + i.GetPrice() + "$");
             }

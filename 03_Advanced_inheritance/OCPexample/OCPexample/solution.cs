@@ -10,7 +10,7 @@ namespace OCPexample
     {
     }
 
-    abstract class motocycle
+    abstract class Motocycle
     {
         public abstract string GetInformation();
         public abstract int GetPrice();
