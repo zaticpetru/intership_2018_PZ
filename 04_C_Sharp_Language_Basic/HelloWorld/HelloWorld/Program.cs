@@ -8,8 +8,10 @@ namespace HelloWorld
         public int a;
         public int b;
 
+        static int test;
         static TestReference()
         {
+            test = 0;
             Console.WriteLine("\n\nYou just create a TestReference\n\n");
         }
     }
@@ -84,6 +86,7 @@ namespace HelloWorld
 
             thread1.Start();
 
+            Console.WriteLine("Number of processors on this machine:" + Environment.ProcessorCount);
         Console.ReadKey();
         }
 
@@ -95,7 +98,7 @@ namespace HelloWorld
     }
     static void Method1()
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 100; i++)
         {
             Console.WriteLine("First thread: " + i);
         }
@@ -103,7 +106,7 @@ namespace HelloWorld
 
     static void Method2()
     {
-        for (int i = 0; i < 10; i++)
+        for (int i = 0; i < 100; i++)
         {
             Console.WriteLine("Second thread: " + i);
         }
