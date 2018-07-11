@@ -1,0 +1,9 @@
+6 Array String 
+
+11 07 2018
+
+1) Create two functions with one-dimensional arrays
+2) Create two functions with multi-dimensional arrays
+3) Practice with creating new modified strings
+4) Practice with StringBuilder
+5) Create program using split/join methods
