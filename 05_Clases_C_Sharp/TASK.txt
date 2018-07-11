@@ -1,0 +1,9 @@
+Clases in C#
+
+11 07 2018
+
+1) C# program which model from real world
+2) Use methods and fields to encapsulate class implementation
+3) Use proprietes to make some fields accessible or replace trivial(getters.setters)
+4) Create a class hierarchy to model real world hierarchies
+5) To overloade and override a method
