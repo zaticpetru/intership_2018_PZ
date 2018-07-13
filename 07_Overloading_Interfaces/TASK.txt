@@ -1,0 +1,13 @@
+Practice Overloading Interfaces
+
+13 07 2018
+
+1) Create  a new custom type <angle> (struct or class)
+	*add numeric fields: degrees minutes seconds
+	*Recall 1(angular) degree = 60(angular) minutes; 1 minute = 60 seconds
+	*Add operator overloading arithmetic and logical operators
+	*Angle a,b,c
+		a = 3 36 53 b = 4 27 45
+		c = a + b = 8 4 38
+
+2) Add possibilitu of sorting array <car> by speed
