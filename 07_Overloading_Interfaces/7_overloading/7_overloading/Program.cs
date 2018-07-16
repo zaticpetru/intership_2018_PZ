@@ -45,25 +45,33 @@ namespace _7_overloading
             }
         }
 
-        public static Angle operator+(Angle l, Angle r)
+        public static Angle operator +(Angle l, Angle r) => new Angle(l.degrees + r.degrees, l.minutes + r.minutes, l.seconds + r.seconds);
+        public static Angle operator -(Angle l, Angle r) => new Angle(l.degrees - r.degrees, l.minutes - r.minutes, l.seconds - r.seconds);
+        public static Angle operator *(Angle l, int c) => new Angle(l.degrees * c, l.minutes * c, l.seconds * c);
+        public static Angle operator /(int c, Angle l) => new Angle(l.degrees / c, l.minutes / c, l.seconds / c);
+        public static bool operator ==(Angle l, Angle r) => (l.degrees == r.degrees) && (l.minutes == r.minutes) && (l.seconds == r.seconds);
+        public static bool operator !=(Angle l, Angle r) => (l.degrees == r.degrees) && (l.minutes == r.minutes) && (l.seconds == r.seconds);
+        public static bool operator >(Angle l, Angle r)
         {
-            return new Angle(l.degrees + r.degrees, l.minutes + r.minutes, l.seconds + r.seconds);
+            if (l.degrees > r.degrees) return true;
+            if (l.degrees < r.degrees) return false;
+            if (l.minutes > r.minutes) return true;
+            if (l.minutes < r.minutes) return false;
+            if (l.seconds > r.seconds) return true;
+            return false;
         }
+        public static bool operator <(Angle l, Angle r)
+        {
+            if (l.degrees < r.degrees) return true;
+            if (l.degrees > r.degrees) return false;
+            if (l.minutes < r.minutes) return true;
+            if (l.minutes > r.minutes) return false;
+            if (l.seconds < r.seconds) return true;
+            return false;
+        }
+        public static bool operator >=(Angle l, Angle r) => (l == r) || (l > r);
+        public static bool operator <=(Angle l, Angle r) => (l == r) || (l < r);
 
-        public static Angle operator -(Angle l, Angle r)
-        {
-            return new Angle(l.degrees - r.degrees, l.minutes - r.minutes, l.seconds - r.seconds);
-        }
-
-        public static Angle operator *(Angle l, int c)
-        {
-            return new Angle(l.degrees * c, l.minutes * c, l.seconds * c);
-        }
-
-        public static Angle operator /(int c, Angle l)
-        {
-            return new Angle(l.degrees / c, l.minutes / c, l.seconds / c);
-        }
         public IEnumerator GetEnumerator()
         {
             yield return this[0];
