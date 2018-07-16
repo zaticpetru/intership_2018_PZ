@@ -1,0 +1,11 @@
+Exception handling and debugging
+
+16 07 2018
+
+1) Create methods whicj checks input arguments and throws exceptions
+2) Create custom exceptions and throw them
+3) Write try-catch-finally block with multiple cathc statements
+4) Rethrow exception
+5) Add conditional compilation symbols
+6) Use debug class to write debug information to output window
+7) Declare implicit typed variable using keyword VAR
