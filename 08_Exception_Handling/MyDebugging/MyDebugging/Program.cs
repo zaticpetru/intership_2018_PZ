@@ -30,6 +30,8 @@ namespace MyDebugging
             if (string.IsNullOrEmpty(s) || string.IsNullOrWhiteSpace(s)) throw new ArgumentNullException("Argument cannot be null, empty or withespace");
             if (s.Contains(" ")) throw new ArgumentException("Argument cannot contain spaces");
 
+            if (s == "666") throw new Exception("Diablo!!", new DivideByZeroException());
+
             int rs;
             if(Int32.TryParse(s, out rs))
             {
@@ -74,7 +76,7 @@ namespace MyDebugging
             }
 
 
-            string input = Console.ReadLine();
+            var input = Console.ReadLine();
             int t;
 
             try
@@ -94,6 +96,19 @@ namespace MyDebugging
             {
                 Console.WriteLine(e.Message);
             }
+#if DEBUG
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Write(ex);
+                throw;
+            }
+#endif
+#if (!DEBUG)
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+#endif
             finally
             {
                 input = String.Empty;
