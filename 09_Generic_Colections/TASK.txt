@@ -1,0 +1,18 @@
+Generics and Collecions
+
+17 07 2018
+
+1) Create a generic collection class (using array[]) having following
+	*get item at given index
+	*set item at given index
+	*swap two items (by index, by item)
+
+2)In the previously made real world oblect modelling application
+	*add nullable properties/fields
+	*add enums
+	*add collections and dictionaries
+	*implement generic repository pattern
+
+3)**ADITIONAL
+	*implement equality comparisions (EqualityComparer, Comparer) for your classes
+	*investigate generic covariance and contravariance
