@@ -2,6 +2,7 @@
 
 using System;
 using System.Diagnostics;
+using System.Threading;
 
 namespace MyDebugging
 {
@@ -70,41 +71,95 @@ namespace MyDebugging
         }
     }
 
-    class DB
+    class Server
     {
-        public static void SaveToDb(string inf)
+        private readonly static int serverSize;
+        private static int numberOfPlayers;
+        private static bool IsActive = true;
+
+        static Server(){
+            serverSize = 3;
+            numberOfPlayers = 0;
+        }
+
+        public static void ChangeActiveStatus()
         {
-            try
-            {
-                //DBConnection.Save();
-            }
-            catch
-            {
-                // Roll back the DB changes so they aren't corrupted on ANY exception
+            IsActive = !IsActive;
+        }
 
-                //DBConnection.Rollback();
-
-                // Re-throw the exception, it's critical that the user knows that it failed to save
-                throw;
+        private bool IsConnected = false;
+        public void Connect()
+        {
+            if (!IsConnected) {
+                if (IsActive) {
+                    if (numberOfPlayers < serverSize)
+                    {
+                        numberOfPlayers++;
+                        IsConnected = true;
+                    }
+                    else throw new Exception("Unable to connect, server full");
+                }else throw new Exception("Unable to connect, server inactive");
             }
         }
+
+        public void Disconect()
+        {
+            if (IsConnected)
+            {
+                numberOfPlayers--;
+                IsConnected = false;
+            }
+        }
+
+
     }
     class Program
     {
         static void Main(string[] args)
         {
 
-            try
-            {
-                DB.SaveToDb("lala");
-            }
-            catch
-            {
-                Console.WriteLine("Failed to save inf in DB");
-            }
+            Server My = new Server();
+            Server My1 = new Server();
+            Server My2 = new Server();
+            Server My3 = new Server();
 
 
-            Console.ReadKey();
+            My1.Connect();
+            My2.Connect();
+            My3.Connect();
+
+            bool test = true;
+
+            Thread thread1 = new Thread(new ThreadStart(Method1));
+            thread1.IsBackground = true;
+            thread1.Start();
+
+            while (test)
+            {
+                try
+                {
+                    My.Connect();
+                    Console.WriteLine("You are succesefully connected to server ;)");
+                    test = false;
+                }
+                catch(Exception e)
+                {
+                    Console.WriteLine("Unable to connect, server error: "  + e.Message + ",\ntry to reconnect?(y/n)");
+                    My3.Disconect();
+                    if (Console.ReadKey().Key != ConsoleKey.Y) test = false;
+                }
+            }
+
+            Console.ReadLine();
+        }
+
+        static void Method1()
+        {
+            while (true)
+            {
+                Server.ChangeActiveStatus();
+                Thread.Sleep(5000);
+            }
         }
     }
 }
