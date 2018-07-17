@@ -121,6 +121,7 @@ namespace MyDebugging
             finally
             {
                 input = String.Empty;
+                //Console.Clear();
             }
 
             Console.ReadKey();
