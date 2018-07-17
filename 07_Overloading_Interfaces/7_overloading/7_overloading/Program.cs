@@ -8,12 +8,10 @@ using System.Threading.Tasks;
 namespace _7_overloading
 {
 
-    class 
-        Angle{
+    class Angle{
         private int degrees;
         private int minutes;
         private int seconds;
-
 
         public Angle(int deg, int min, int sec) {
             degrees = deg;
@@ -72,6 +70,18 @@ namespace _7_overloading
         }
         public static bool operator >=(Angle l, Angle r) => (l == r) || (l > r);
         public static bool operator <=(Angle l, Angle r) => (l == r) || (l < r);
+
+        public override int GetHashCode()
+        {
+            return (degrees*360+minutes*60+seconds).GetHashCode();
+        }
+        public override bool Equals(object obj)
+        {
+            if (!(obj is Angle))
+                return false;
+
+            return Equals((Angle)obj);
+        }
 
         public IEnumerator GetEnumerator()
         {
