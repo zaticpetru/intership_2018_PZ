@@ -10,10 +10,11 @@ namespace MyDebugging
         public static long Power(int n, int p)
         {
             if (n == 0 && p == 0) throw new ArithmeticException("Zero la puterea zero nu are sens");
-            if (p < 0) throw new Exception("Functia nu ridica la putere negativa");
+            if (p < 0) throw new ArgumentException(nameof(p), "Functia nu ridica la putere negativa");
 
             long t = 1;
-            for (int i = 0; i < p; i++) t *= n;
+            for (int i = 0; i < p; i++)
+                t *= n;
 
             return t;
         }
@@ -26,13 +27,13 @@ namespace MyDebugging
 
         public static int ToInt(string s)
         {
-            if (string.IsNullOrEmpty(s) || string.IsNullOrWhiteSpace(s)) throw new ArgumentNullException("s","din cauza lui s");
+            if (string.IsNullOrEmpty(s)) throw new ArgumentNullException(nameof(s), "din cauza lui s");
             if (s.Contains(" ")) throw new ArgumentException("Argument cannot contain spaces");
 
             if (s == "666") throw new Exception("Diablo!!", new DivideByZeroException());
 
             int rs;
-            if(Int32.TryParse(s, out rs))
+            if (Int32.TryParse(s, out rs))
             {
                 return rs;
             }
@@ -42,87 +43,66 @@ namespace MyDebugging
             }
         }
     }
-
-    
-
     class MouseNotFoundException : Exception
     {
+        string NameOfPc { get; set; }
         public MouseNotFoundException() { }
         public MouseNotFoundException(string message) : base(message) { }
         public MouseNotFoundException(string message, Exception inner) : base(message, inner) { }
+    }
+
+    class Account
+    {
+        private bool active;
+        public bool IsActive { get; }
+        public int money
+        {
+            get
+            {
+                return money;
+            }
+            set
+            {
+                if (value < 0) active = false;
+                else active = true;
+                money = value;
+            }
+        }
+    }
+
+    class DB
+    {
+        public static void SaveToDb(string inf)
+        {
+            try
+            {
+                //DBConnection.Save();
+            }
+            catch
+            {
+                // Roll back the DB changes so they aren't corrupted on ANY exception
+
+                //DBConnection.Rollback();
+
+                // Re-throw the exception, it's critical that the user knows that it failed to save
+                throw;
+            }
+        }
     }
     class Program
     {
         static void Main(string[] args)
         {
-            try
-            {
-                //Console.WriteLine(MyMath.Power(0, 0));
-                Console.WriteLine(MyMath.Power(6, -6));
-            }
-            catch (ArithmeticException e)
-            {
-                throw new Exception("Nu putem ridica la putere, eroare, pentru detalii vezi inner " , e);
-            }
-            catch (Exception e)
-            {
-                Debug.WriteLine(e);
-            }
-
-            ConsoleKeyInfo c = Console.ReadKey();
-            try
-            {
-                MyMath.ItIsMouse(c.Key);
-            }
-            catch(MouseNotFoundException e)
-            {
-                Console.WriteLine(e.Message);
-            }
-
-
-            var input = Console.ReadLine();
-            int t;
 
             try
             {
-                t = MyMath.ToInt(input);
-                Console.WriteLine("Numarul introdus = {0}", t);
+                DB.SaveToDb("lala");
             }
-            catch (ArgumentNullException e) when (input == String.Empty)
+            catch
             {
-                Console.WriteLine("stringul este empty!!!!!" + e.Message);
-                throw new Exception("bla", e);
+                Console.WriteLine("Failed to save inf in DB");
             }
-            catch (ArgumentNullException e)
-            {
-                Console.WriteLine(e.Message);
-            }
-            catch (ArgumentException e)
-            {
-                Console.WriteLine(e.Message);
-            }
-            catch (FormatException e)
-            {
-                Console.WriteLine(e.Message);
-            }
-#if DEBUG
-            catch (Exception ex)
-            {
-                Debug.Write(ex);
-                throw;
-            }
-#endif
-#if (!DEBUG)
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-#endif
-            finally
-            {
-                input = String.Empty;
-                //Console.Clear();
-            }
+
 
             Console.ReadKey();
         }
