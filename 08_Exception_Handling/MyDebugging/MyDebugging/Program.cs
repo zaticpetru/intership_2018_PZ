@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿#define RELEASE
+
+using System;
+using System.Diagnostics;
 
 namespace MyDebugging
 {
@@ -11,7 +10,7 @@ namespace MyDebugging
         public static long Power(int n, int p)
         {
             if (n == 0 && p == 0) throw new ArithmeticException("Zero la puterea zero nu are sens");
-            if (p < 0) throw new ArithmeticException("Functia nu ridica la putere negativa");
+            if (p < 0) throw new Exception("Functia nu ridica la putere negativa");
 
             long t = 1;
             for (int i = 0; i < p; i++) t *= n;
@@ -27,7 +26,7 @@ namespace MyDebugging
 
         public static int ToInt(string s)
         {
-            if (string.IsNullOrEmpty(s) || string.IsNullOrWhiteSpace(s)) throw new ArgumentNullException("Argument cannot be null, empty or withespace");
+            if (string.IsNullOrEmpty(s) || string.IsNullOrWhiteSpace(s)) throw new ArgumentNullException("s","din cauza lui s");
             if (s.Contains(" ")) throw new ArgumentException("Argument cannot contain spaces");
 
             if (s == "666") throw new Exception("Diablo!!", new DivideByZeroException());
@@ -58,11 +57,16 @@ namespace MyDebugging
         {
             try
             {
-                Console.WriteLine(MyMath.Power(0, 0));
+                //Console.WriteLine(MyMath.Power(0, 0));
+                Console.WriteLine(MyMath.Power(6, -6));
             }
             catch (ArithmeticException e)
             {
-                Console.WriteLine("Nu putem ridica la putere, eroare: " + e.Message);
+                throw new Exception("Nu putem ridica la putere, eroare, pentru detalii vezi inner " , e);
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e);
             }
 
             ConsoleKeyInfo c = Console.ReadKey();
@@ -84,6 +88,11 @@ namespace MyDebugging
                 t = MyMath.ToInt(input);
                 Console.WriteLine("Numarul introdus = {0}", t);
             }
+            catch (ArgumentNullException e) when (input == String.Empty)
+            {
+                Console.WriteLine("stringul este empty!!!!!" + e.Message);
+                throw new Exception("bla", e);
+            }
             catch (ArgumentNullException e)
             {
                 Console.WriteLine(e.Message);
@@ -99,7 +108,7 @@ namespace MyDebugging
 #if DEBUG
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.Write(ex);
+                Debug.Write(ex);
                 throw;
             }
 #endif
