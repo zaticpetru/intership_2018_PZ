@@ -20,7 +20,7 @@ namespace _7_overloading
             ToNormal();
         }
 
-        private int this[int i]
+        public int this[int i]
         {
             get
             {
@@ -49,7 +49,7 @@ namespace _7_overloading
         public static Angle operator *(Angle l, int c) => new Angle(l.degrees * c, l.minutes * c, l.seconds * c);
         public static Angle operator /(int c, Angle l) => new Angle(l.degrees / c, l.minutes / c, l.seconds / c);
         public static bool operator ==(Angle l, Angle r) => (l.degrees == r.degrees) && (l.minutes == r.minutes) && (l.seconds == r.seconds);
-        public static bool operator !=(Angle l, Angle r) => (l.degrees == r.degrees) && (l.minutes == r.minutes) && (l.seconds == r.seconds);
+        public static bool operator !=(Angle l, Angle r) => !(l == r);
         public static bool operator >(Angle l, Angle r)
         {
             if (l.degrees > r.degrees) return true;
@@ -177,13 +177,15 @@ namespace _7_overloading
         }
     }
 
-
     class Program
     {
         static void Main(string[] args)
         {
             Angle a = new Angle(0, 0, -30);
             Angle b = new Angle(0, -0, -31);
+
+
+
             //a.ToNormal();
             Console.WriteLine((a + b).ToString());
 
