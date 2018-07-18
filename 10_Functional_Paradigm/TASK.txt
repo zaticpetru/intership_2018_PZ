@@ -1,0 +1,11 @@
+Functional Paradigm
+LINQ
+
+18 07 2018
+
+1) Create a collection
+2) Manipulate collection via delegates
+3) Rewrite using anonymus functions
+4) Rewrite using lambda expressions
+5) Using extension methods on the collection
+6) Using select/where operators on the collection
