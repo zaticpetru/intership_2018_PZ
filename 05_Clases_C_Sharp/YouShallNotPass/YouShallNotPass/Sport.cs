@@ -32,7 +32,8 @@
         public override string GetTotalInformation()
         {
             return ModelName + " produced in " + ProductionYear + ", particiated in " + Races + " races, where wins " +
-                Wins + "\n you can buy it at only " + GetPrice() + " $\nA one year maintenance cost: " + YearMaintenancePrice() + "\nTotal mileage = " + mileage;
+                Wins + "\n you can buy it at only " + GetPrice() + " $\nA one year maintenance cost: " + YearMaintenancePrice() + 
+                "\nTotal mileage = " + mileage;
         }
 
         public override int YearMaintenancePrice()

@@ -1,14 +1,28 @@
 ﻿using System;
+using System.Collections;
 
 namespace YouShallNotPass
 {
-    public abstract class Motorcicle
+    public abstract class Motorcicle : RepositoryItem, IComparer, IEqualityComparer
     {
         protected int ProductionYear;
 
         protected int EngineDisplacement;
 
         protected MotoType MotoType;
+
+        static int Number = 0;
+
+        public override int Id
+        {
+            get;
+        }
+
+        public Motorcicle()
+        {
+            Id = Number++;
+        }
+
 
         public string GetTypeOfMoto()
         {
@@ -81,5 +95,36 @@ namespace YouShallNotPass
         public abstract int GetPrice();
         public abstract int YearMaintenancePrice();
         public abstract string GetTotalInformation();
+
+        public int Compare(object x, object y)
+        {
+            Motorcicle t = (Motorcicle)x;
+            Motorcicle p = (Motorcicle)y;
+
+            if (t.EngineDisplacement > p.EngineDisplacement) return 1;
+            if (t.EngineDisplacement < p.EngineDisplacement) return -1;
+            return 0;
+        }
+
+        public new bool Equals(object x, object y)
+        {
+            Motorcicle t = (Motorcicle)x;
+            Motorcicle p = (Motorcicle)y;
+
+            bool rs;
+
+            rs =(t.ModelName == p.ModelName) &&
+                (t.MotoType == p.MotoType) &&
+                (t.EngineDisplacement == p.EngineDisplacement) &&
+                (t.ProductionYear == p.ProductionYear);
+
+            return rs;
+
+        }
+
+        public int GetHashCode(object obj)
+        {
+            return Id*13+EngineDisplacement*17+ProductionYear;
+        }
     }
 }

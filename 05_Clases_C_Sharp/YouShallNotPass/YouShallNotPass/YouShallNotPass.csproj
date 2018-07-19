@@ -42,8 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IRepository.cs" />
+    <Compile Include="Repository.cs" />
+    <Compile Include="RepositoryItem.cs" />
     <Compile Include="Motorcicle.cs" />
     <Compile Include="MotoType.cs" />
+    <Compile Include="Owner.cs" />
     <Compile Include="Road.cs" />
     <Compile Include="Sport.cs" />
     <Compile Include="Test.cs" />
