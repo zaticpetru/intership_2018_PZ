@@ -74,6 +74,23 @@ namespace FuncP
             Console.WriteLine();
             Afis(Guests);
 
+            Console.WriteLine("\n");
+            for(int i = 0; i < Guests.Count; i++)
+            {
+                Console.WriteLine("Name - {0} , has value = {1}", Guests[i].Name, Guests[i].Name.GetCode());
+            }
+
+            var adult = from p in Guests
+                        where p.Age >= 18// && p.Height > 160
+                        orderby p.Name
+                        select p.Name + " " + p.Surname + " " + p.Age;
+
+            Console.WriteLine("\n\n");
+            foreach(string t in adult)
+            {
+                Console.WriteLine(t);
+            }
+
             Console.ReadKey();
         }
 
