@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace YouShallNotPass
 {
-    public abstract class Motorcicle : RepositoryItem, IComparer, IEqualityComparer
+    public abstract class Motorcicle : Entity<int>, IComparer<Motorcicle>, IEqualityComparer<Motorcicle>
     {
         protected int ProductionYear;
 
@@ -12,11 +13,6 @@ namespace YouShallNotPass
         protected MotoType MotoType;
 
         static int Number = 0;
-
-        public override int Id
-        {
-            get;
-        }
 
         public Motorcicle()
         {
@@ -96,35 +92,45 @@ namespace YouShallNotPass
         public abstract int YearMaintenancePrice();
         public abstract string GetTotalInformation();
 
-        public int Compare(object x, object y)
+        public int Compare(Motorcicle t, Motorcicle p)
         {
-            Motorcicle t = (Motorcicle)x;
-            Motorcicle p = (Motorcicle)y;
-
             if (t.EngineDisplacement > p.EngineDisplacement) return 1;
             if (t.EngineDisplacement < p.EngineDisplacement) return -1;
             return 0;
         }
 
-        public new bool Equals(object x, object y)
-        {
-            Motorcicle t = (Motorcicle)x;
-            Motorcicle p = (Motorcicle)y;
+        //public override bool Equals(object x)
+        //{
+        //    Motorcicle t = (Motorcicle)x;
+        //    Motorcicle p = (Motorcicle)y;
 
+        //    bool rs;
+
+        //    rs =(t.ModelName == p.ModelName) &&
+        //        (t.MotoType == p.MotoType) &&
+        //        (t.EngineDisplacement == p.EngineDisplacement) &&
+        //        (t.ProductionYear == p.ProductionYear);
+
+        //    return rs;
+
+        //}
+
+        public int GetHashCode(Motorcicle obj)
+        {
+            return Id*13+EngineDisplacement*17+ProductionYear;
+        }
+
+        public bool Equals(Motorcicle t, Motorcicle p)
+        {
             bool rs;
 
-            rs =(t.ModelName == p.ModelName) &&
+            rs = (t.ModelName == p.ModelName) &&
                 (t.MotoType == p.MotoType) &&
                 (t.EngineDisplacement == p.EngineDisplacement) &&
                 (t.ProductionYear == p.ProductionYear);
 
             return rs;
 
-        }
-
-        public int GetHashCode(object obj)
-        {
-            return Id*13+EngineDisplacement*17+ProductionYear;
         }
     }
 }

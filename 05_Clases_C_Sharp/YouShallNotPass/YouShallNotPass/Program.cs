@@ -4,10 +4,74 @@ using System.Linq;
 
 namespace YouShallNotPass
 {
+
+    public class Base
+    {
+
+    }
+
+    public class Derived: Base
+    {
+
+    }
+
+    public class SubDerived : Derived
+    {
+
+    }
+
+
+    public interface ICovariant< T>
+    {
+
+    }
+
+    //public class Covarinat<T> : ICovariant<T>
+    //{
+
+    //}
+
+
+
+    public class Covarinat<Derived> : ICovariant<Base>
+    {
+
+    }
+
+
+
+
+
     class Program
     {
+
+
+
+
+
         static void Main(string[] args)
         {
+
+            Base b = new Derived();
+            ICovariant<Base> r = new Covarinat<SubDerived>();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             Dictionary<Motorcicle, Owner> AllMoto = new Dictionary<Motorcicle, Owner>();
 

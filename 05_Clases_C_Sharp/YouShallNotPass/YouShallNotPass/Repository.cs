@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace YouShallNotPass
 {
-    class Repository<T> : IRepository<T> where T : RepositoryItem
+    class Repository<T> : IRepository<T> where T : Entity
     {
 
         List<T> DataBase;
@@ -11,11 +11,6 @@ namespace YouShallNotPass
         public Repository()
         {
             DataBase = new List<T>();
-        }
-
-        public Repository(int capacity)
-        {
-            DataBase = new List<T>(capacity);
         }
 
         public void AddItem(T item)
@@ -39,12 +34,12 @@ namespace YouShallNotPass
 
         }
 
-        public T GetItem(T item)
-        {
-            return DataBase.FirstOrDefault(p => p == item);
-        }
+        //public T GetItem(T item)
+        //{
+        //    return DataBase.FirstOrDefault(p => p == item);
+        //}
 
-        public void UpdateItem(T item)
+        public void UpdateItem(T item) // to add : update values by ID (int ID, T newItem)
         {
             DataBase.Remove(item);
             DataBase.Add(item);

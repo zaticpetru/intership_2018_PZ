@@ -1,7 +1,7 @@
 ﻿namespace YouShallNotPass
 {
-    public abstract class RepositoryItem
+    public abstract class Entity<T>
     {
-        public abstract int Id { get;}
+        public T Id { get; set; }
     }
 }
