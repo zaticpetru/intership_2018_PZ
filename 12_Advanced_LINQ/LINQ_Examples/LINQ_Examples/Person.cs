@@ -17,12 +17,12 @@ namespace LINQ_Examples
 
         public bool Parent() { return isParent; }
         public Person(string name, string surname, 
-                      string birthContury, int postCode,
+                      string birthCountry, int postCode,
                       Ocupation ocupation, int age)
         {
             Name = name;
             Surname = surname;
-            BirthContury = birthContury;
+            BirthContury = birthCountry;
             PostCode = postCode;
             tOcupation = ocupation;
             Age = age;

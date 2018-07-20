@@ -26,6 +26,14 @@ namespace LINQ_Examples
                 new Person("Daria", "Pliu", "Russia", 8546, Ocupation.NoOcupation, 40, new List<string> {"Denis", "Masha", "Ira"})
             };
 
+            List<Country> countries = new List<Country>
+            {
+                new Country("Moldova","Mamaliga"),
+                new Country("USA","White House"),
+                new Country("Russia", "Balalaica"),
+                new Country("UK","BigBang")
+            };
+
             IEnumerable<Person> qWhere = people//.Take(3) // will take first three persons in list, then filter them by ocupation
                                                .Where(person => person.tOcupation != Ocupation.NoOcupation)
                                                .Take(3) // take first 3 persons with ocupation
@@ -44,10 +52,36 @@ namespace LINQ_Examples
 
             var qSelectMany = people.Where(person => person.Parent())
                                     .SelectMany(parent => parent.Childrens, (parent, children) => new { parent, children });
-            foreach (var p in qSelectMany) Console.WriteLine(p);
+            //foreach (var p in qSelectMany) Console.WriteLine(p);
 
 
-            Console.ReadKey();
+            var qJoin = countries.GroupJoin(people,
+                        country => country.Name,
+                        person => person.BirthContury,
+                        (c, p) => new
+                        {
+                            Country = c.Name,
+                            Specific = c.Specific,
+                            LiveIn = p.Select(pl => pl.Name + " " + pl.Surname)
+                        }
+                        );
+
+            //foreach(var t in qJoin)
+            //{
+            //    Console.WriteLine(t.Country + " - enjoy " + t.Specific);
+
+            //    foreach (string p in t.LiveIn)
+            //        Console.WriteLine("    " + p);
+
+            //    Console.WriteLine();
+            //}
+
+            var qZip = people.Zip(people.Skip(1), (f, s) => f.Name + " is precedend to " + s.Name);
+
+            //foreach (string t in qZip)
+            //    Console.WriteLine(t);
+
+            //Console.ReadKey();
         }
     }
 }
