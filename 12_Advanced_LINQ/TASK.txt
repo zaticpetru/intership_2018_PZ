@@ -1,0 +1,6 @@
+Advanced LINQ
+
+20 07 2018
+
+1) Create one or more sequences and use at leas one opearator of each type
+3) Use closures in operations
