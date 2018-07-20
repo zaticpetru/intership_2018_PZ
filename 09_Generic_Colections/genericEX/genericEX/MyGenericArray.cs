@@ -7,7 +7,7 @@ namespace genericEX
         public int size { get; private set; }
         public const int MaxSize = 2147483647;
         private int pow = 2;
-        public int count { get; private set; }
+        private int count { get; set; }
         private T[] a;
         public MyGenericArray(int size)
         {
