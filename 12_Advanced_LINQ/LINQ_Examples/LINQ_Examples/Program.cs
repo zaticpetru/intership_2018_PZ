@@ -61,7 +61,7 @@ namespace LINQ_Examples
                         (c, p) => new
                         {
                             Country = c.Name,
-                            Specific = c.Specific,
+                            c.Specific,
                             LiveIn = p.Select(pl => pl.Name + " " + pl.Surname)
                         }
                         );
@@ -81,7 +81,95 @@ namespace LINQ_Examples
             //foreach (string t in qZip)
             //    Console.WriteLine(t);
 
-            //Console.ReadKey();
+            IEnumerable<Person> qOrder = people.OrderBy(p => p.Name)
+                               .ThenByDescending(p => p.Surname)
+                               .Reverse();
+
+            //foreach (Person p in qOrder) Console.WriteLine(p.ToString() + "\n");
+
+            var qGroupBy = people.GroupBy(p => p.tOcupation)
+                                 .Select(g => new
+                                 {
+                                     Name = g.Key,
+                                     Count = g.Count(),
+                                     People = g.Select(p => p.Name + " " + p.Surname)
+                                 });
+
+            //foreach (var t in qGroupBy)
+            //{
+            //    Console.WriteLine("Ocupation = {0} , number of peoples {1}", t.Name, t.Count);
+            //    foreach(var p in t.People)
+            //        Console.WriteLine(p);
+            //    Console.WriteLine();
+            //}
+
+            var qNoOcupation = people.Select(p => p)
+                                     .Where(p => p.tOcupation == Ocupation.NoOcupation);
+
+            var qMoldova = people.Select(p => p)
+                                 .Where(p => p.BirthContury == "Moldova");
+
+            //var qSet = qNoOcupation.Union(qMoldova);
+            Person[] qSet = qMoldova.Except(qNoOcupation).ToArray();
+            //var qSet = qMoldova.Intersect(qNoOcupation);
+
+            //foreach (var t in qSet) Console.WriteLine("{0}\n",t.ToString());
+
+            Person qElement = people.FirstOrDefault(p => p.BirthContury == "Moldova");
+
+            //Console.WriteLine("{0}\n",(qElement?.ToString() ?? "No such persone"));
+
+
+            var qAggregate = people.Select(p => p.Age)
+                                   .Aggregate((e, q) => e + q);
+
+            //Console.WriteLine("Total age of all peoples : {0}", qAggregate);
+
+            bool qQuantifiers = people.Any(p => p.Age < 12);
+            //Console.WriteLine("there {0} such people", qQuantifiers ? "are" : "aren't");
+
+            int n = 5;
+            int qGeneration = Enumerable
+                     .Range(1, n)
+                     .Aggregate((rs, next) => rs * next);
+            //Console.WriteLine("{0}! = {1}", n, qGeneration);
+
+            var action = CreateAction();
+
+            action();
+            action();
+            action();
+            action();
+
+
+            var funcs1 = new List<Func<int>>();
+            for (int i = 0; i < 3; i++)
+            {
+                funcs1.Add(() => i);
+            }
+            foreach (var f in funcs1)
+                Console.WriteLine(f());
+
+            var funcs = new List<Func<int>>();
+            for (int i = 0; i < 3; ++i)
+            {
+                int tmp = i;
+                funcs.Add(() => tmp);
+            }
+            foreach (var f in funcs)
+                Console.WriteLine(f());
+
+            Console.ReadKey();
+        }
+        static Action CreateAction()
+        {
+            int count = 0;
+            Action action = () =>
+            {
+                count++;
+                Console.WriteLine("Count = {0}", count);
+            };
+            return action;
         }
     }
 }
