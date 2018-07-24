@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace LINQ_Examples
 {
-    class Person
+    class Person : IComparable
     {
         private bool isParent;
         public string Name { get; set; }
@@ -59,7 +60,7 @@ namespace LINQ_Examples
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Surname);
             hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(BirthContury);
             hashCode = hashCode * -1521134295 + PostCode.GetHashCode();
-            hashCode = hashCode * -1521134295 + Age.GetHashCode();
+           // hashCode = hashCode * -1521134295 + Age.GetHashCode();
             hashCode = hashCode * -1521134295 + tOcupation.GetHashCode();
             return hashCode;
         }
@@ -72,8 +73,23 @@ namespace LINQ_Examples
                    Surname == person.Surname &&
                    BirthContury == person.BirthContury &&
                    PostCode == person.PostCode &&
-                   Age == person.Age &&
+                   //Age == person.Age &&
                    tOcupation == person.tOcupation;
+        }
+
+        public int CompareTo(object obj)
+        {
+            var person = obj as Person;
+            bool test = person != null &&
+                   Name == person.Name &&
+                   Surname == person.Surname &&
+                   BirthContury == person.BirthContury &&
+                   PostCode == person.PostCode &&
+                   //Age == person.Age &&
+                   tOcupation == person.tOcupation;
+            if (test) return 0;
+            else if (Age > person.Age) return 1;
+            else return -1;
         }
     }
 }
