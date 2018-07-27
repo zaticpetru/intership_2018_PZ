@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace StructuralExample
+namespace Facade
 {
     class MyFile
     {

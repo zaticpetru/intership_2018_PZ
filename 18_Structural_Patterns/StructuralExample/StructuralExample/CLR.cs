@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 
-namespace StructuralExample
+namespace Facade
 {
     class CLR
     {

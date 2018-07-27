@@ -1,4 +1,4 @@
-﻿namespace StructuralExample
+﻿namespace Facade
 {
     class VisuaStudioFacade
     {
