@@ -1,0 +1,6 @@
+17 Creational Patterns
+
+27 07 2018
+
+1) Implement singleton in my project
+2) Implement factory in my project
