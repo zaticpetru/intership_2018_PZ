@@ -1,0 +1,8 @@
+18 structural patterns
+
+27 07 2018
+
+1) Introduce a proxy in your project
+2) Introduce a decorator in your project
+3) Create a example of Facade
+4) Law of Demeter
