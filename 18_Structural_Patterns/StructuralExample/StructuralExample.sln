@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Decorator", "Decorator\Deco
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proxy", "Proxy\Proxy.csproj", "{A5B3C962-FEAB-4314-8CED-B114721B309F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LawOfDemeter", "LawOfDemeter\LawOfDemeter.csproj", "{F93209C9-0587-4CE4-BCF8-D6FF33A3FD28}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{A5B3C962-FEAB-4314-8CED-B114721B309F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5B3C962-FEAB-4314-8CED-B114721B309F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5B3C962-FEAB-4314-8CED-B114721B309F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F93209C9-0587-4CE4-BCF8-D6FF33A3FD28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F93209C9-0587-4CE4-BCF8-D6FF33A3FD28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F93209C9-0587-4CE4-BCF8-D6FF33A3FD28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F93209C9-0587-4CE4-BCF8-D6FF33A3FD28}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
