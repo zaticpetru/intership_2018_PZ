@@ -42,8 +42,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChococlateBoiler.cs" />
+    <Compile Include="MoldovaIngirdientFactory.cs" />
+    <Compile Include="MoldovaPizzaStore.cs" />
+    <Compile Include="NewYorkIngirdientFactory.cs" />
+    <Compile Include="NewYorkPeperoniPizza.cs" />
+    <Compile Include="MoldovaPeperoniPizza.cs" />
+    <Compile Include="NewYorkPizzaStore.cs" />
+    <Compile Include="NewYorkRondoPizza.cs" />
+    <Compile Include="PeperoniPizza.cs" />
+    <Compile Include="Pizza.cs" />
+    <Compile Include="PizzaFactory.cs" />
+    <Compile Include="PizzaIngredientFactory.cs" />
+    <Compile Include="PizzaStore.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="MoldovaRondoPizza.cs" />
+    <Compile Include="RondoPizza.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
