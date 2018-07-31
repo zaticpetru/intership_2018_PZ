@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace YouShallNotPass
 {
-    class Repository<T> : IRepository<T> where T : Entity
+    class Repository<T,U> : IRepository<T,U> where T : Entity<U> where U : struct
     {
 
         List<T> DataBase;
@@ -28,9 +28,9 @@ namespace YouShallNotPass
             return DataBase;
         }
 
-        public T GetByID(int id)
+        public T GetByID(U id)
         {
-            return DataBase.FirstOrDefault(p => p.Id == id);
+            return DataBase.FirstOrDefault(p => p.Id.Equals(id));
 
         }
 
@@ -48,6 +48,11 @@ namespace YouShallNotPass
         public void AddRange(IEnumerable<T> range)
         {
             DataBase.AddRange(range);
+        }
+
+        public T GetItem(T item)
+        {
+            return DataBase.FirstOrDefault(p => item.Equals(p));
         }
     }
 }
