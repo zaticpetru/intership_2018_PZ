@@ -11,8 +11,8 @@
             {
                 //case "peperoni": pizza = new NewYorkPeperoniPizza(); break;
                 //case "rondo": pizza = new NewYorkRondoPizza(); break;
-                case "peperoni": pizza = new PeperoniPizza(ingredientFactory); pizza.SetName("New York Peperoni"); break;
-                case "rondo": pizza = new RondoPizza(ingredientFactory); pizza.SetName("New York Rondo");  break;
+                //case "peperoni": pizza = new PeperoniPizza(ingredientFactory); pizza.SetName("New York Peperoni"); break;
+                //case "rondo": pizza = new RondoPizza(ingredientFactory); pizza.SetName("New York Rondo");  break;
             }
 
             return pizza;

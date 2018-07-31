@@ -20,10 +20,10 @@
 
             if (pizza != null)
             {
-                pizza.Prepare();
-                pizza.Bake();
-                pizza.Cut();
-                pizza.Box();
+                //pizza.Prepare();
+                //pizza.Bake();
+                //pizza.Cut();
+                //pizza.Box();
             }
             return pizza;
         }

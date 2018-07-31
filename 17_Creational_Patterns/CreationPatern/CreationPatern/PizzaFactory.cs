@@ -2,30 +2,22 @@
 {
     public class PizzaFactory
     {
-        public static Pizza CreatePizza(string type)
+        public static Pizza CreateMoldovaPeperoniPizza(int quantity)
         {
-            Pizza pizza = null;
-        
-            switch (type.ToLower())
-            {
-                case "peperoni" : pizza = new MoldovaPeperoniPizza(); break;
-                case "rondo": pizza = new MoldovaRondoPizza(); break;
-            }
+            if(quantity > 2)
+                throw new System.Exception()
 
-            return pizza;
+            return new Pizza("Moldova type Peperoni", "Mamaliga", "Neapolitan Style", 950, 95);
         }
 
-        public Pizza GetPizza(string type)
+        public static Pizza CreateAmericanRondoPizza()
         {
-            Pizza pizza = null;
-
-            switch (type.ToLower())
-            {
-                case "peperoni": pizza = new MoldovaPeperoniPizza(); break;
-                case "rondo": pizza = new MoldovaRondoPizza(); break;
-            }
-
-            return pizza;
+            return new Pizza("Really American Rondo", "Mexican", "NewYork Style", 888, 105);
         }
+        public static Pizza CreateItalianoPizza()
+        {
+            return new Pizza("Italiano Classico Pizza", "No", "Sicilian Style", 1500, 250);
+        }
+
     }
 }
