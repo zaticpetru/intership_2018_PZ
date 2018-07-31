@@ -1,0 +1,15 @@
+C# 4 -> 6 -> 7 features
+
+31 07 2018
+
+1) think a method with optional parameters in your domain
+2) call methods with optional parameters and using named arguments
+3) experiment with dynamic
+4) convert to autoproprety
+5) consider expression bodied methods
+6) consider string interpolation
+7) think of exception filtring application
+8) precondition with nameof
+9) see if you can apply null conditional operator
+10) test c# 7.0 features
+11) self study conversions
