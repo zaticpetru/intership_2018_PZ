@@ -101,10 +101,11 @@ namespace YouShallNotPass
             Console.WriteLine(kawa.GetTotalInformation() + "\n\n");
             Console.WriteLine(honda.GetTotalInformation() + "\n\n");
 
-            Repository<Motorcicle> DataBase = new Repository<Motorcicle>();
+            Repository<Motorcicle,int> DataBase = new Repository<Motorcicle,int>();
             DataBase.AddRange(new List<Motorcicle> { kawa, honda, kawa, kawa });
 
-
+            string interpolationTest = "testing this pice of s";
+            Console.WriteLine($"{interpolationTest} la la la ");
 
             Console.ReadKey();
         }
