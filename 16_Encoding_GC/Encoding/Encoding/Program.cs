@@ -40,7 +40,13 @@ namespace EncodingEx
             //Console.WriteLine(MyUnicodeChars);
             //Console.WriteLine(MyAsciiChars);
 
-            Console.WriteLine("с".Equals("c",StringComparison.Ordinal));
+            //Console.WriteLine("с".Equals("c",StringComparison.Ordinal));
+
+            TimeSpan t = new TimeSpan(23,22,22);
+
+            t += TimeSpan.FromHours(72);
+
+            Console.WriteLine(t.ToString());
 
             Console.ReadKey();
 
