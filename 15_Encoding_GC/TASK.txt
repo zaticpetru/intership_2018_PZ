@@ -1,0 +1,13 @@
+Encoding Disposal & Garbadge Collectiion
+
+01 08 2018
+
+1) Use encodings in writing to file stream
+2) Use string formating, searching and comparing in your application
+3) Use timespan in your application
+4) Use DateTime in your application
+5) Use TimeZone in your application
+6) Use cultureInfo when working with strings and numbers
+7) Implement IDisposable in your application
+8) Use finalizers in your application
+9) Store DataTime on local file system then read it and print in correct format for current user locale
