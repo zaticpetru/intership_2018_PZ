@@ -45,17 +45,17 @@ namespace CSharpFeatureas
 
         static void CW(dynamic t)
         {
-            WriteLine(t);
+            WriteLine(t.ToString());
         }
 
         static void Main(string[] args)
         {
-            WriteLine($"2 * 3 = {Multiply(2, 3)}");
-            WriteLine($"2 * 3 * -4 = {Multiply(2, 3, -4)}");
-            WriteLine($"2 * 3 * 4 * 5 = {Multiply(2, 3, 4, 5)}");
-            WriteLine($"21 * 13 * 33 * 4 * 6 = {Multiply(21, 13, 33, 4, 6)}");
+            //WriteLine($"2 * 3 = {Multiply(2, 3)}");
+            //WriteLine($"2 * 3 * -4 = {Multiply(2, 3, -4)}");
+            //WriteLine($"2 * 3 * 4 * 5 = {Multiply(2, 3, 4, 5)}");
+            //WriteLine($"21 * 13 * 33 * 4 * 6 = {Multiply(21, 13, 33, 4, 6)}");
 
-            WriteLine($"sum of 10 random numbers = {Sum(10, 23, 1, 36, 2, 234, 65, 13, 455, 54, 53, 54, 54, 21, 2, 54)}");
+            //WriteLine($"sum of 10 random numbers = {Sum(10, 23, 1, 36, 2, 234, 65, 13, 455, 54, 53, 54, 54, 21, 2, 54)}");
 
             Crujca[] Servis = { //new Crujca(filedWith: null),
                                 new Crujca(material: "porcelan", filedWith:"Lapte"),
@@ -64,26 +64,26 @@ namespace CSharpFeatureas
 
 
             WriteLine();
-            foreach (Crujca crujca in Servis)
-                CW(crujca.ToString());
+            //foreach (Crujca crujca in Servis)
+            //    CW(crujca.ToString());
 
 
-            dynamic dynamicVariable = 100;
-            WriteLine("Dynamic variable value: {0}, Type: {1}", dynamicVariable, dynamicVariable.GetType().ToString());
+            //dynamic dynamicVariable = 100;
+            //WriteLine("Dynamic variable value: {0}, Type: {1}", dynamicVariable, dynamicVariable.GetType().ToString());
 
-            dynamicVariable = "Hello World!!";
-            WriteLine("Dynamic variable value: {0}, Type: {1}", dynamicVariable, dynamicVariable.GetType().ToString());
+            //dynamicVariable = "Hello World!!";
+            //WriteLine("Dynamic variable value: {0}, Type: {1}", dynamicVariable, dynamicVariable.GetType().ToString());
 
-            dynamicVariable = true;
-            WriteLine("Dynamic variable value: {0}, Type: {1}", dynamicVariable, dynamicVariable.GetType().ToString());
+            //dynamicVariable = true;
+            //WriteLine("Dynamic variable value: {0}, Type: {1}", dynamicVariable, dynamicVariable.GetType().ToString());
 
-            dynamicVariable = DateTime.Now;
-            WriteLine("Dynamic variable value: {0}, Type: {1}", dynamicVariable, dynamicVariable.GetType().ToString());
+            //dynamicVariable = DateTime.Now;
+            //WriteLine("Dynamic variable value: {0}, Type: {1}", dynamicVariable, dynamicVariable.GetType().ToString());
 
             var testInitializers = new Dictionary<int, string>()
             {
                 {1,"first" },
-                {3,"third" }
+                {3,"third" },
             };
 
             var testInitializers2 = new Dictionary<int, string>()
@@ -95,10 +95,10 @@ namespace CSharpFeatureas
             testInitializers = testInitializers.Concat(testInitializers2)
                                 .ToDictionary(p => p.Key, p => p.Value);
 
-            foreach (var t in testInitializers) CW(t.ToString());
+            //foreach (var t in testInitializers) CW(t.ToString());
 
-            string test = null;
-            WriteLine("test is =  " + (test?.Length ?? 0) );
+            string test = "gfjhf";
+            //WriteLine("test is =  " + ((test?.Length ?? -1) == -1 ? "null" : "not null") );
 
             void square(int x, out int res)
             {
@@ -126,8 +126,8 @@ namespace CSharpFeatureas
 
             }
 
-            WriteLine("Strign count in object array = {0}", StringCount);
-            WriteLine("Sum of integers in object array = {0}", Summa);
+            //WriteLine("Strign count in object array = {0}", StringCount);
+            //WriteLine("Sum of integers in object array = {0}", Summa);
 
             ReadKey();
         }
