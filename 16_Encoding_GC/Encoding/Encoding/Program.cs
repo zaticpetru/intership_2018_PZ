@@ -1,13 +1,60 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 
 namespace EncodingEx
 {
+    class Test : IDisposable
+    {
+        bool disposed = false;
+
+        public void Dispose() // NOT virtual
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this); // Prevent finalizer from running.
+        }
+        protected virtual void Dispose(bool disposing)
+        {
+            if (disposed)
+                return;
+
+            if (disposing)
+            {
+                // Call Dispose() on other objects owned by this instance.
+                // You can reference other finalizable objects here.
+                // ...
+            }
+            // Release unmanaged resources owned by (just) this object.
+            // ...
+            disposed = true;
+        }
+        ~Test()
+        {
+            Dispose(false);
+        }
+    }
+    class MyLittleObject : IDisposable
+    {
+        private Mutex mutex;
+        private bool mutexCreated;
+
+        public MyLittleObject(string appName)
+        {
+            mutex = new Mutex(false, appName, out mutexCreated);
+        }
+
+        public bool MutexCreated => mutexCreated;
+
+        public void Dispose()
+        {
+            mutex.Dispose();
+            //mutex.Close(); as example in IDbConnection a closed connection
+            // can be re-Opened, a Disposed connection cannot
+        }
+
+    }
     class Program
     {
         static void Main(string[] args)
@@ -108,6 +155,39 @@ namespace EncodingEx
                 string str = "A testing string";
                 fs.Write(UTF32.GetBytes(str), 0, UTF32.GetByteCount(str));
             }
+            //FileStream fs = new FileStream("TestFile.txt", FileMode.OpenOrCreate); 
+            //try
+            //{
+            //   
+            //}
+            //finally
+            //{
+            //    if (fs != null) ((IDisposable)fs).Dispose();
+            //}
+
+            int Length;
+
+            using (FileStream output = new FileStream("DateTime.txt", FileMode.OpenOrCreate))
+            {
+                string str = DateTime.UtcNow.ToString();
+                Console.WriteLine(str);
+                Length = UTF32.GetByteCount(str);
+
+                output.Write(UTF32.GetBytes(str), 0, Length);
+            }
+
+            using (FileStream input = new FileStream("DateTime.txt", FileMode.Open))
+            {
+                byte[] buff = new byte[Length];
+                input.Read(buff, 0, Length);
+                string str = UTF32.GetString(buff);
+
+                DateTime test;
+                DateTime.TryParse(str, out test);
+                test = DateTime.SpecifyKind(test, DateTimeKind.Utc);
+                test = test.ToLocalTime();
+                Console.WriteLine(test);
+            }
 
             Console.ReadKey();
 
@@ -119,5 +199,7 @@ namespace EncodingEx
             foreach (var p in props)
                 Console.WriteLine("{0} = {1}", p.Name, p.GetValue(o, null));
         }
+
+
     }
 }
