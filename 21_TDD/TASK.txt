@@ -1,0 +1,8 @@
+Test driven development
+
+03 08 2018
+
+1) Unit-test a developed class of your choice. Use at least two organizational structures
+2) Use attributes testfixture, test, testcase, setup
+3) Create a test using mock
+4) Try writing a fixture using TDD
