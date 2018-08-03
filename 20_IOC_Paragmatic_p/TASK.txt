@@ -1,0 +1,6 @@
+20 Inversion of control and paragmatic principles
+
+03 08 2018
+
+1) Learn Visual Studio shortcuts
+2) Implement inversion of control
